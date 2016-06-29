@@ -1,0 +1,32 @@
+﻿  SpriteGameScreen.cpp
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\screens\spritegame\spritegamescreen.cpp(104): warning C4018: '<': signed/unsigned mismatch
+  SpriteGameRoutines.cpp
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\screens\spritegame\spritegameroutines.cpp(32): warning C4390: ';': empty controlled statement found; is this the intent?
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\screens\spritegame\spritegameroutines.cpp(34): warning C4390: ';': empty controlled statement found; is this the intent?
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\screens\spritegame\spritegameroutines.cpp(59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  ship.cpp
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\screens\spritegame\ship.cpp(205): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\screens\spritegame\ship.cpp(212): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  screenManager.cpp
+  menuScreen.cpp
+  Node.cpp
+  sdlWindow.cpp
+  sdlResources.cpp
+  main.cpp
+  Helper.cpp
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\game setup\helper.cpp(39): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\game setup\helper.cpp(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\game setup\helper.cpp(40): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\game setup\helper.cpp(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Entity.cpp
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\entity.cpp(29): warning C4552: '+': operator has no effect; expected operator with side-effect
+k:\_year 1\c++\_sdl\sdl term_ii_template - copy\term_ii_template\entity.cpp(33): warning C4552: '+': operator has no effect; expected operator with side-effect
+  Generating Code...
+  MathLib.lib(utility.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+Entity.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+  Generating code
+  Finished generating code
+MathLib.lib(utility.obj) : warning LNK4099: PDB 'MathLib.pdb' was not found with 'MathLib.lib(utility.obj)' or at 'K:\_Year 1\C++\_SDL\sdl Term_II_Template - Copy\Debug\MathLib.pdb'; linking object as if no debug info
+  Term_II_Template.vcxproj -> K:\_Year 1\C++\_SDL\sdl Term_II_Template - Copy\Debug\Term_II_Template.exe
+  Term_II_Template.vcxproj -> K:\_Year 1\C++\_SDL\sdl Term_II_Template - Copy\Debug\Term_II_Template.pdb (Partial PDB)

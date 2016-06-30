@@ -31,9 +31,9 @@ public:
 	{
 		m_sprite = a_sprite;
 	}
-	int m_cost;
-private:
 	float m_x;
 	float m_y;
+	int m_cost;
+private:
 	SDL_Texture* m_sprite;
 };

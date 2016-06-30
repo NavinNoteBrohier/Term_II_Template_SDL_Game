@@ -8,8 +8,10 @@
 #include "..\..\Game Setup\sdlWindow.h"
 #include "..\..\Game Setup\sdlResources.h"
 #include "../../Game Setup/Helper.h"
+#include "../../Node.h"
 #include "Header\utility.h"
 #include <fstream>
+#include <vector>
 
 using namespace Helper;
 
@@ -17,7 +19,7 @@ class ship
 {
 public:
 	ship();
-	ship(SDL_Texture* a_tex,float a_x, float a_y, float a_width, float a_height, int a_frameWidth, int a_frameHeight, int a_frameX, int a_frameY);
+	ship(SDL_Texture* a_tex,float a_x, float a_y, float a_width, float a_height, int a_frameWidth, int a_frameHeight, int a_frameX, int a_frameY, bool a_pcontrol);
 	~ship();
 	enum Wepname
 	{
@@ -42,12 +44,13 @@ public:
 	void UpdateShip(Matrix3 p_mat);
 	void ShipPos(float a_x, float a_y);
 	void KeyPress();
-
+	void Steering();
 	void Saveship();
 	bool LoadShip();
 
-	int ReturnAngle();
+	void SetTarget(vector<Node*>* a_node);
 
+	int ReturnAngle();
 	Matrix3 ShipMat;
 	SDL_Texture* m_tex;
 protected:
@@ -58,24 +61,29 @@ protected:
 	Matrix3		 LocalSpace = Scale * Rotation * Translation;
 	Vector3		 m_Position;
 	SDL_Rect	 Dest;
+	vector<Node*>*	Target;
 	bool		 m_save;
+	bool		 m_KeyControl;
 	float		 m_angle;
 	float		 m_width;
 	float		 m_height;
-	float		 m_Fwidth;
-	float		 m_Fheight;
 	float		 m_x;
 	float		 m_y;
 	float		 m_TopSpeed;
 	float		 m_Decellerate;
+	float		 m_velocity;
+
 	float		 m_health;
 	float		 m_attack;
 	Weapons		 m_weapon;
+
 	int			 m_framewidth;
 	int			 m_frameheight;
 	int			 m_FrameX;
 	int			 m_FrameY;
 	float		 m_delay;
+
+
 };
 
 class ChildShip : public ship

@@ -21,7 +21,7 @@ public:
 
 	void GetKeys(ship a_ship);
 	void SpawnNodes(int a_rows, int a_cols, int a_x, int a_y, int a_increment);
-	vector<Node*>Waypoint;
+	vector<Node*> Waypoint;
 	void ResetData();
 	bool init();
 

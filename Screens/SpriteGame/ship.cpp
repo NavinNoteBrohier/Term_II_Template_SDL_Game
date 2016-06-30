@@ -32,7 +32,7 @@ void setRotateZ(Matrix3 p_parent,float a_num)
 	p_parent.m_floats[1][1] = cosf(a_num);
 }
 
-ship::ship(SDL_Texture* a_tex,float a_x, float a_y, float a_width, float a_height, int a_frameWidth, int a_frameHeight, int a_frameX, int a_frameY)
+ship::ship(SDL_Texture* a_tex,float a_x, float a_y, float a_width, float a_height, int a_frameWidth, int a_frameHeight, int a_frameX, int a_frameY, bool a_pcontrol)
 {
 	m_tex = a_tex;
 
@@ -47,6 +47,8 @@ ship::ship(SDL_Texture* a_tex,float a_x, float a_y, float a_width, float a_heigh
 
 	m_FrameX = a_frameX;
 	m_FrameY = a_frameY;
+
+	m_KeyControl = a_pcontrol;
 }
 
 ship::~ship()
@@ -154,6 +156,39 @@ void ship::KeyPress()
 	if (HELP_Keypresses(SDL_SCANCODE_1)) LoadShip();
 }
 
+void ship::Steering()
+{
+	static int i = 0;
+
+	if ((*Target).size()-1 == 0)return;
+	if (i > ((*Target).size() - 1))
+	{
+		i = 0;
+	}
+
+	float Speed = 2;
+	bool X = false;
+	bool Y = false;
+
+	Vector2 TargetVector((*Target)[i]->m_x, (*Target)[i]->m_y);
+	TargetVector.normalise();
+
+	m_angle = atan2(TargetVector.y - m_y, TargetVector.x - m_x);
+	m_angle *= 180 / M_PI;
+	m_angle += 90;
+
+	if (m_x < (*Target)[i]->m_x) { m_x += Speed; }
+	else if (m_x >(*Target)[i]->m_x) { m_x -= Speed; }
+	else { X = true; };
+
+	if (m_y < (*Target)[i]->m_y) { m_y+= Speed; }
+	else if (m_y >(*Target)[i]->m_y) { m_y-= Speed; }
+	else { Y = true; }
+
+	if (X && Y) { i++; };
+
+}
+
 void ship::Saveship()
 {
 	ofstream outfile;
@@ -173,7 +208,6 @@ void ship::Saveship()
 	}
 }
 		
-
 bool ship::LoadShip()
 {
 	ifstream infile;
@@ -200,6 +234,11 @@ bool ship::LoadShip()
 	return false;
 }
 
+void ship::SetTarget(vector<Node*>* a_node)
+{
+	Target = a_node;
+}
+
 int ship::ReturnAngle()
 {
 	return m_angle;
@@ -219,14 +258,15 @@ void ship::UpdateShip(Matrix3 p_world)
 	ShipMat.m_floats[2][0] = m_x;
 	ShipMat.m_floats[2][1] = m_y;
 
-
-	m_angle += 0.5;
+	//m_angle += 5;
+	if (m_angle > 359) m_angle = 0;
 	setRotateZ(ShipMat,m_angle);
 
 	Dest.w = (int)(m_width * p_world.m_floats[0][0]);
 	Dest.h = (int)(m_height * p_world.m_floats[1][1]);
 
-	KeyPress();
+	if (m_KeyControl == true) { KeyPress(); }
+	else{Steering();}
 	DrawShip();
 }
 
